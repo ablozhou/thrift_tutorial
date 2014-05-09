@@ -1,21 +1,23 @@
-== thrift tutorial ==
-1.go to 
+# thrift tutorial 
+## 1. download thrift
 https://thrift.apache.org/
 download thrift-0.9.1
 
-2.install thrift2.install thrift
+## 2.install thrift2.install thrift
+<pre>
 zhh@andymac Downloads$ cd thrift-0.9.1
 ./configure
 make
 zhh@andymac thrift-0.9.1$ make install
+</pre>
+## 3. difference of thrift file from thrift.apache.com
 
-3. modify share.thrift
-
+for share.thrift
 
 add 
  namespace go tutorial 
 
-modify tutorial.thrift 
+for tutorial.thrift 
 add
   namespace go tutorial
 
@@ -24,8 +26,14 @@ find i32 calculate(1:i32 logid, 2:Work w), comment throw expression,because thri
 // zhh 2014.5.9: thrift 0.9.1 has bug of exception process for go lang. so comment 
 // throws (1:InvalidOperation ouch),
 
-4.in top directory
-  make server
+## 4. make go lang server
+  in top directory,generate source file
+  $ thrift --gen go -out src share.thrift
+  $ thrift --gen go -out src tutorial.thrift
+  $ thrift --gen java -o java src share.thrift
+  $ thrift --gen java -o java tutorial.thrift
+  $ make server
 
-5. in java directory
-  make client
+## 5. make java client client
+  in java directory
+  $ make client
